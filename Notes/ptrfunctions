@@ -1,0 +1,22 @@
+Pointers to Functions
+
+	Functions in C are actually just pointers to a spot in the program where some code exists.
+
+	Function pointer format:
+		int (*POINTER_NAME)(int a, int b);
+		
+		-Write a normal function declaration: int callme(int a, int b)
+		-Wrap the function name with the pointer syntax: int (*callme)(int a, int b)
+		-Change the name to the pointer name: (*compare_cb)(int a, int b)
+		
+		You can use the function pointer just like the function but with a different name similar to how array pointers can be used like arrays
+		
+		int (*tester)(int a, int b) = sorted_order;
+		printf("TEST: %d is the same as %d\n", tester(2, 3), sorted_order(2, 3));
+		
+		This works even if the function pointer returns a pointer to something:
+			Write it:				char *make_coolness(int awesome_levels)
+			Wrap it:				char *(*make_coolness)(int awesome_levels)
+			Rename it:			char *(*coolness_cb)(int awesome_levels)
+		
+	Problem with using function pointers is that it's hard to give them as parameters to a function, such sa when you want to pass the function callback to another function. The solution is to use typedef, which is a C keyword for making new names for other, more complex types. The only thing you need to do is put typedef before the same function pointer syntax, and then after that you can use the name like it's a type.

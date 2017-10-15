@@ -1,0 +1,45 @@
+Learn C the hard way
+
+	Pointers:
+		Overview:
+		-ages[i]
+		ages is the address of the very first integer in ages.
+		'i' is an address inside of ages
+
+		C thinks your whole computer is one massive array of bytes.
+		If you can take a base address, like ages, and add to it another address like 'i'
+		to produce a new address, then can you just make something that points right at this 			location all the time? YES AND THAT THING IS CALLED A POINTER.
+	
+		It's kind of like a combination of ages and 'i' rolled into one data type
+	
+		The purpose of a pointer is to let you manually index data into blocks of memory
+		when an array won't do it right. A pointer gives you raw, direct access to a block
+		of memory so you can work with it.
+		
+		
+		Practical Pointer Usage:
+		1) Ask the OS for a chunk of memory and use a pointer to work with it.
+		This includes strings and structs.
+		2) Pass large blocks of memory (like large structs) to functions with a pointer,
+		so you don't have to pass the whole thing to them.
+		3) Take the address of a function, so you can use it as a dynamic callback.
+		4) Scan complex chunks of memory, converting bytes off of a network
+		socket into data structures or parsing files.
+		
+		
+		The Pointer Lexicon:
+		type *ptr				-A pointer of type named ptr
+		*ptr					-The value of whatever ptr is pointed at
+		*(ptr + i)				-The value of (what ptr is pointed at plus i)
+		&thing				-The address of thing
+		type *ptr = &thing		-A pointer of type named ptr set to the address of thing
+		ptr++				-Increment where ptr points
+		
+		Poniters aren't arrays
+		If you do sizeof(ptr) you would get the size of the pointer, not the size of what it points
+		at.
+		
+		
+		
+		
+		

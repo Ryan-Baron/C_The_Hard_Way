@@ -1,0 +1,21 @@
+Heap versus Stack Allocation
+
+	-Each time you call malloc the OS uses internal functions to register that piece of memory for you which is on the heap
+	-Valgrind helps tracking memory leaks 
+	
+	Stack:
+		-Stack is special that stores temporary variables, which each function creates as locals to that function.
+		
+		How it works:
+			Each argument to a function is pushed onto the stack then used inside the function.
+			It's really a stack data structure, so last thing is the first thing out LIFO
+			This also happens with all local varibales like char action and int id in man
+			Advantage of using a stack for this is simply that when the function exits, the C compiler pops these variables off of the stack to clean up. This is simple and prevents memory leaks if the variable is on the stack.
+			
+	3 primary problems with stacks and heaps:
+		1) If you get a block of memory from malloc, and have that pointer on the stack, then when the function exits the pointer will get popped off and lost.
+		2) If you put too much data on the stack (like large structs and arrays), then you can cause a stack overflow and the program will abort. In this case, use the heap with malloc.
+		3) If you take a pointer to something on the stack, and then pass or return it from your function, then the function receiving it will segmentation fault(segfault), because the actual data will get popped off and disappear. You'll be pointing at dead space.
+			
+	
+	
